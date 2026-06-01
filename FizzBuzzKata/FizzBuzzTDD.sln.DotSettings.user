@@ -1,0 +1,45 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=026d7273_002D39d7_002D4d65_002Db183_002Dcacf3b3d6fa8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="FizzBuzzTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=27a70f33_002D95db_002D4508_002Db2f9_002D9456ebdf71c1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="FizzBuzzTests #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=436cf164_002D3110_002D4257_002Daec2_002Dc7368cd244c2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Given1_ReturnsOne" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given1_ReturnsOne&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5ef84441_002D5794_002D42b3_002Db868_002D252f4fc2574e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="FizzBuzzTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a5f327f6_002D5fea_002D4f8b_002D9c5f_002D219acc8c029c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Given1_ReturnsOne #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given1_ReturnsOne&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given2_ReturnsTwo&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given3_ReturnsFizz&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given4_ReturnsFour&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given5_ReturnsBuzz&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given6_ReturnsFizz&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given10_ReturnsBuzz&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given9_ReturnsFizz&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given15_ReturnsFizzBuzz&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given20_ReturnsBuzz&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b788333b_002D5ac6_002D47b6_002D9b9d_002D0d201f6b19b4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="FizzBuzzTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c506abef_002De228_002D493e_002Dab33_002Dd48328bf9d13/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Given1_ReturnsOne #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::9AA74D91-6A40-4923-96D3-A8DFD0690F74::net8.0::FizzBuzzTDD.FizzBuzzTests.Given1_ReturnsOne&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
