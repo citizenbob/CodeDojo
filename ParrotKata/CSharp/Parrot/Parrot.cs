@@ -103,13 +103,25 @@ namespace Parrot
 
     public class AfricanParrot : Parrot
     {
-        public AfricanParrot(int numberOfCoconuts) : base(ParrotTypeEnum.AFRICAN, numberOfCoconuts, 0, false) { }
+        //Private read-onlys are for inside jokes only:
+        //It's a simple question of weight ratios!
+        //A five-ounce bird could not carry a one-pound coconut.
+        //An African swallow maybe, but not a European swallow;
+        //That's my point.
+        private readonly int _numberOfCoconuts;
+
+        public AfricanParrot(int numberOfCoconuts) : base(ParrotTypeEnum.AFRICAN, numberOfCoconuts, 0, false)
+        {
+            _numberOfCoconuts = numberOfCoconuts;
+        }
+        public new virtual double GetSpeed() => Math.Max(0, 12.0 - 9.0 * _numberOfCoconuts);
+        public new virtual string GetCry()   => "Sqaark!";
     }
 
     public class EuropeanParrot() : Parrot(ParrotTypeEnum.EUROPEAN, 0, 0, false)
     {
         // a virtual method is bound at runtime based on the actual object type
         public new virtual double GetSpeed() => 12.0;
-        public new virtual string GetCry()   => "Sqoork!";
+        public new virtual string GetCry() => "Sqoork!";
     }
 }
