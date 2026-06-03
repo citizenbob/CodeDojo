@@ -18,6 +18,18 @@ namespace Parrot
             _isNailed = isNailed;
         }
 
+        // Factory — The strangler fig plan is to swap new Parrot( to Parrot.Create( in tests
+        public static Parrot Create(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
+        {
+            return type switch
+            {
+                ParrotTypeEnum.EUROPEAN => new EuropeanParrot(),
+                ParrotTypeEnum.AFRICAN => new AfricanParrot(numberOfCoconuts),
+                ParrotTypeEnum.NORWEGIAN_BLUE => new NorwegianBlueParrot(voltage, isNailed),
+                _ => throw new ArgumentOutOfRangeException(nameof(type))
+            };
+        }
+
         // this method knows about three different _types
         // of parrots and separate logic for each
         public double GetSpeed()
@@ -34,10 +46,11 @@ namespace Parrot
                     throw new ArgumentOutOfRangeException();
             }
         }
-        
+
+
         // extracted case into a private method that returns decimals
         private double GetEuropeanSpeed() => GetBaseSpeed();
-        
+
         // extracted case into a private method that returns decimals
         private double GetAfricanSpeed() => Math.Max(0, GetBaseSpeed() - GetLoadFactor() * _numberOfCoconuts);
 
@@ -76,7 +89,24 @@ namespace Parrot
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
             return value;
         }
+    }
+
+    //Create empty classes extending Parrot
+    public class NorwegianBlueParrot : Parrot
+    {
+        public NorwegianBlueParrot(double voltage, bool isNailed) : base(ParrotTypeEnum.NORWEGIAN_BLUE, 0, voltage, isNailed) { }
+    }
+
+    public class AfricanParrot : Parrot
+    {
+        public AfricanParrot(int numberOfCoconuts) : base(ParrotTypeEnum.AFRICAN, numberOfCoconuts, 0, false) { }
+    }
+
+    public class EuropeanParrot : Parrot
+    {
+        public EuropeanParrot() : base(ParrotTypeEnum.EUROPEAN, 0, 0, false) { }
     }
 }
