@@ -18,6 +18,8 @@ namespace Parrot
             _isNailed = isNailed;
         }
 
+        // this method knows about three different _types
+        // of parrots and separate logic for each
         public double GetSpeed()
         {
             switch (_type)
