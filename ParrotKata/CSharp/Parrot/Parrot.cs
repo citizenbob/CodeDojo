@@ -19,9 +19,10 @@ namespace Parrot
         }
 
         // Factory — The strangler fig plan is to swap new Parrot( to Parrot.Create( in tests
+        // The Parrot.Create() factory takes a type, a number of coconuts, voltage decimal, and nailed modifier params
         public static Parrot Create(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
         {
-            return type switch
+            return type switch // Parrot.Create() returns a static type
             {
                 ParrotTypeEnum.EUROPEAN => new EuropeanParrot(),
                 ParrotTypeEnum.AFRICAN => new AfricanParrot(numberOfCoconuts),
@@ -105,8 +106,10 @@ namespace Parrot
         public AfricanParrot(int numberOfCoconuts) : base(ParrotTypeEnum.AFRICAN, numberOfCoconuts, 0, false) { }
     }
 
-    public class EuropeanParrot : Parrot
+    public class EuropeanParrot() : Parrot(ParrotTypeEnum.EUROPEAN, 0, 0, false)
     {
-        public EuropeanParrot() : base(ParrotTypeEnum.EUROPEAN, 0, 0, false) { }
+        // a virtual method is bound at runtime based on the actual object type
+        public new virtual double GetSpeed() => 12.0;
+        public new virtual string GetCry()   => "Sqoork!";
     }
 }
