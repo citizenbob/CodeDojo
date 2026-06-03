@@ -27,7 +27,7 @@ namespace Parrot
                 case ParrotTypeEnum.EUROPEAN:
                     return GetEuropeanSpeed();
                 case ParrotTypeEnum.AFRICAN:
-                    return Math.Max(0, GetBaseSpeed() - GetLoadFactor() * _numberOfCoconuts);
+                    return GetAfricanSpeed();
                 case ParrotTypeEnum.NORWEGIAN_BLUE:
                     return _isNailed ? 0 : GetBaseSpeed(_voltage);
                 default:
@@ -37,6 +37,9 @@ namespace Parrot
 
         // extracted case into a private method that returns decimals
         private double GetEuropeanSpeed() => GetBaseSpeed();
+        
+        // extracted case into a private method that returns decimals
+        private double GetAfricanSpeed() => Math.Max(0, GetBaseSpeed() - GetLoadFactor() * _numberOfCoconuts);
 
         private double GetBaseSpeed(double voltage)
         {
