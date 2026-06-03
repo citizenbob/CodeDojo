@@ -25,7 +25,7 @@ namespace Parrot
             switch (_type)
             {
                 case ParrotTypeEnum.EUROPEAN:
-                    return GetBaseSpeed();
+                    return GetEuropeanSpeed();
                 case ParrotTypeEnum.AFRICAN:
                     return Math.Max(0, GetBaseSpeed() - GetLoadFactor() * _numberOfCoconuts);
                 case ParrotTypeEnum.NORWEGIAN_BLUE:
@@ -34,6 +34,9 @@ namespace Parrot
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        // extracted case into a private method that returns decimals
+        private double GetEuropeanSpeed() => GetBaseSpeed();
 
         private double GetBaseSpeed(double voltage)
         {
