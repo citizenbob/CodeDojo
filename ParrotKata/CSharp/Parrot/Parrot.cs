@@ -2,23 +2,18 @@
 
 namespace Parrot
 {
-    public class Parrot
+    // Make Parrot abstract and remove the switches
+    // You can't have a parrot that isn't one of the three types.
+    // There's no such thing as a plain Parrot in this domain. 
+    public abstract class Parrot
     {
-        private readonly bool _isNailed;
-        private readonly int _numberOfCoconuts;
-        private readonly ParrotTypeEnum _type;
-        private readonly double _voltage;
-
-        public Parrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
-        {
-            _type = type;
-            _numberOfCoconuts = numberOfCoconuts;
-            _voltage = voltage;
-            _isNailed = isNailed;
-        }
-
-        // Factory — The strangler fig plan is to swap new Parrot() to Parrot.Create() in tests
-        // The Parrot.Create() factory takes a type, a number of coconuts, voltage decimal, and nailed modifier params
+        // `abstract` Every Parrot will answer GetSpeed(), but I'm not saying how.
+        // The subclasses are what keep the promise. `override` on each
+        // subclass is the fulfillment of that contract.
+        // On the base class this means, GetSpeed and GetCry are questions each Parrot
+        // has to answer
+        public abstract double GetSpeed();
+        public abstract string GetCry();
         public static Parrot Create(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
         {
             return type switch // Parrot.Create() returns a static type
@@ -29,108 +24,33 @@ namespace Parrot
                 _ => throw new ArgumentOutOfRangeException(nameof(type))
             };
         }
-
-        // this method knows about three different _types
-        // of parrots and separate logic for each
-        // virtually dispatched at runtime
-        public virtual double GetSpeed()
-        {
-            switch (_type)
-            {
-                case ParrotTypeEnum.EUROPEAN:
-                    return GetEuropeanSpeed();
-                case ParrotTypeEnum.AFRICAN:
-                    return GetAfricanSpeed();
-                case ParrotTypeEnum.NORWEGIAN_BLUE:
-                    return GetNorwegianSpeed();
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-
-        // extracted case into a private method that returns decimals
-        private double GetEuropeanSpeed() => GetBaseSpeed();
-
-        // extracted case into a private method that returns decimals
-        private double GetAfricanSpeed() => Math.Max(0, GetBaseSpeed() - GetLoadFactor() * _numberOfCoconuts);
-
-        // extracted case into a private method that returns decimals
-        private double GetNorwegianSpeed() => _isNailed ? 0 : GetBaseSpeed(_voltage);
-
-        private double GetBaseSpeed(double voltage)
-        {
-            return Math.Min(24.0, voltage * GetBaseSpeed());
-        }
-
-        private double GetLoadFactor()
-        {
-            return 9.0;
-        }
-
-        private double GetBaseSpeed()
-        {
-            return 12.0;
-        }
-
-        //virtually dispatched during runtime
-        public virtual string GetCry()
-        {
-            string value;
-            switch (_type)
-            {
-                case ParrotTypeEnum.EUROPEAN:
-                    value = "Sqoork!";
-                    break;
-                case ParrotTypeEnum.AFRICAN:
-                    value = "Sqaark!";
-                    break;
-                case ParrotTypeEnum.NORWEGIAN_BLUE:
-                    value = _voltage > 0 ? "Bzzzzzz" : "...";
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            return value;
-        }
     }
 
-    //Create empty classes extending Parrot
     public class NorwegianBlueParrot : Parrot
     {
-        //More inside jokes...
+        // Each subclass answers it in exactly the way that makes sense for what it is.
+        // Norwegian Blue knows about voltage and nails
         private readonly double _voltage;
         private readonly bool   _isNailed;
-        public NorwegianBlueParrot(double voltage, bool isNailed) : base(
-            ParrotTypeEnum.NORWEGIAN_BLUE, 0, voltage, isNailed)
-        {
-            _voltage  = voltage;
-            _isNailed = isNailed;
-        }
+        public NorwegianBlueParrot(double voltage, bool isNailed) { _voltage  = voltage; _isNailed = isNailed; }
         public override double GetSpeed() => _isNailed ? 0 : Math.Min(24.0, _voltage * 12.0);
         public override string GetCry()   => _voltage > 0 ? "Bzzzzzz" : "...";
     }
 
     public class AfricanParrot : Parrot
     {
-        //Private read-onlys are for inside jokes only:
-        //It's a simple question of weight ratios!
-        //A five-ounce bird could not carry a one-pound coconut.
-        //An African swallow maybe, but not a European swallow;
-        //That's my point.
+        // Each subclass answers it in exactly the way that makes sense for what it is.
+        // African knows about coconuts
         private readonly int _numberOfCoconuts;
-
-        public AfricanParrot(int numberOfCoconuts) : base(ParrotTypeEnum.AFRICAN, numberOfCoconuts, 0, false)
-        {
-            _numberOfCoconuts = numberOfCoconuts;
-        }
+        public AfricanParrot(int numberOfCoconuts) { _numberOfCoconuts = numberOfCoconuts; }
         public override double GetSpeed() => Math.Max(0, 12.0 - 9.0 * _numberOfCoconuts);
         public override string GetCry()   => "Sqaark!";
     }
 
-    public class EuropeanParrot() : Parrot(ParrotTypeEnum.EUROPEAN, 0, 0, false)
+    public class EuropeanParrot() : Parrot
     {
+        // Each subclass answers it in exactly the way that makes sense for what it is.
+        // European just returns 12.0 because that's all it needs to know.
         public override double GetSpeed() => 12.0;
         public override string GetCry() => "Sqoork!";
     }
