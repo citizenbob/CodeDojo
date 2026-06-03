@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Parrot
 {
@@ -18,7 +17,7 @@ namespace Parrot
             _isNailed = isNailed;
         }
 
-        // Factory — The strangler fig plan is to swap new Parrot( to Parrot.Create( in tests
+        // Factory — The strangler fig plan is to swap new Parrot() to Parrot.Create() in tests
         // The Parrot.Create() factory takes a type, a number of coconuts, voltage decimal, and nailed modifier params
         public static Parrot Create(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
         {
@@ -33,7 +32,8 @@ namespace Parrot
 
         // this method knows about three different _types
         // of parrots and separate logic for each
-        public double GetSpeed()
+        // virtually dispatched at runtime
+        public virtual double GetSpeed()
         {
             switch (_type)
             {
@@ -73,7 +73,8 @@ namespace Parrot
             return 12.0;
         }
 
-        public string GetCry()
+        //virtually dispatched during runtime
+        public virtual string GetCry()
         {
             string value;
             switch (_type)
@@ -101,16 +102,14 @@ namespace Parrot
         //More inside jokes...
         private readonly double _voltage;
         private readonly bool   _isNailed;
-
         public NorwegianBlueParrot(double voltage, bool isNailed) : base(
             ParrotTypeEnum.NORWEGIAN_BLUE, 0, voltage, isNailed)
         {
             _voltage  = voltage;
             _isNailed = isNailed;
         }
-        
-        public new virtual double GetSpeed() => _isNailed ? 0 : Math.Min(24.0, _voltage * 12.0);
-        public new virtual string GetCry()   => _voltage > 0 ? "Bzzzzzz" : "...";
+        public override double GetSpeed() => _isNailed ? 0 : Math.Min(24.0, _voltage * 12.0);
+        public override string GetCry()   => _voltage > 0 ? "Bzzzzzz" : "...";
     }
 
     public class AfricanParrot : Parrot
@@ -126,14 +125,13 @@ namespace Parrot
         {
             _numberOfCoconuts = numberOfCoconuts;
         }
-        public new virtual double GetSpeed() => Math.Max(0, 12.0 - 9.0 * _numberOfCoconuts);
-        public new virtual string GetCry()   => "Sqaark!";
+        public override double GetSpeed() => Math.Max(0, 12.0 - 9.0 * _numberOfCoconuts);
+        public override string GetCry()   => "Sqaark!";
     }
 
     public class EuropeanParrot() : Parrot(ParrotTypeEnum.EUROPEAN, 0, 0, false)
     {
-        // a virtual method is bound at runtime based on the actual object type
-        public new virtual double GetSpeed() => 12.0;
-        public new virtual string GetCry() => "Sqoork!";
+        public override double GetSpeed() => 12.0;
+        public override string GetCry() => "Sqoork!";
     }
 }
