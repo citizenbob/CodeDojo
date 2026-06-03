@@ -98,7 +98,19 @@ namespace Parrot
     //Create empty classes extending Parrot
     public class NorwegianBlueParrot : Parrot
     {
-        public NorwegianBlueParrot(double voltage, bool isNailed) : base(ParrotTypeEnum.NORWEGIAN_BLUE, 0, voltage, isNailed) { }
+        //More inside jokes...
+        private readonly double _voltage;
+        private readonly bool   _isNailed;
+
+        public NorwegianBlueParrot(double voltage, bool isNailed) : base(
+            ParrotTypeEnum.NORWEGIAN_BLUE, 0, voltage, isNailed)
+        {
+            _voltage  = voltage;
+            _isNailed = isNailed;
+        }
+        
+        public new virtual double GetSpeed() => _isNailed ? 0 : Math.Min(24.0, _voltage * 12.0);
+        public new virtual string GetCry()   => _voltage > 0 ? "Bzzzzzz" : "...";
     }
 
     public class AfricanParrot : Parrot
