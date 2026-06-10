@@ -7,18 +7,18 @@ public class VendingMachineTests
     {
         var machine = new VendingMachine();
 
-        var response = machine.Vend("A09");
+        var response = machine.Vend("A09", 0);
         
         Assert.Equal("Invalid Selection: A09", response);
     }
     
     [Fact]
-    public void A01_VendSoda()
+    public void A01_WithExactChange_VendSoda()
     {
         var machine = new VendingMachine();
-        machine.LoadProducts(new Product { Code = "A01", Name = "Soda"} );
+        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m} );
         
-        var response = machine.Vend("A01");
+        var response = machine.Vend("A01", 1.00m);
         
         Assert.Equal("Vending Soda", response);
     }
