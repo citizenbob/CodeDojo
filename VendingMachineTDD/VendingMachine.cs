@@ -12,6 +12,8 @@ public class VendingMachine
             return "Vending Soda";
         if (code == "A01" && funds > 1.00m)
             return "Vending Soda: Change $" + (funds - 1.00m);
+        if (code == "A01" && funds < 1.00m)
+            return "Feed me $" + (1.00m - funds) + " more";
         return "Invalid Selection: " + code;
     }
 }
