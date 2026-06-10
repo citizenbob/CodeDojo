@@ -16,7 +16,7 @@ public class VendingMachineTests
     public void A01_WithExactChange_VendSoda()
     {
         var machine = new VendingMachine();
-        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m} );
+        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m, Inventory = 1} );
         
         var response = machine.Vend("A01", 1.00m);
         
@@ -27,7 +27,7 @@ public class VendingMachineTests
     public void A01_ExceedsPrice_VendSoda_ReturnChange()
     {
         var machine = new VendingMachine();
-        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m} );
+        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m, Inventory = 1} );
         
         var response = machine.Vend("A01", 5.00m);
         
@@ -38,10 +38,22 @@ public class VendingMachineTests
     public void A01_InsufficientFunds_VendSoda_RequestFunds()
     {
         var machine = new VendingMachine();
-        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m} );
+        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m, Inventory = 1} );
         
         var response = machine.Vend("A01", 0.50m);
         
         Assert.Equal("Feed me $0.50 more", response);
+    }
+    
+    [Fact]
+    public void A01_VendLastSoda_DisplaySoldOut()
+    {
+        var machine = new VendingMachine();
+        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m, Inventory = 1} );
+        
+        machine.Vend("A01", 1.00m);
+        var response = machine.Vend("A01", 1.00m);
+        
+        Assert.Equal("Sold Out", response);
     }
 }
