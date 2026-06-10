@@ -3,7 +3,7 @@ namespace BowlingTDD;
 public class BowlingTests
 {
     [Fact]
-    public void RollAllGutters_ScoreZero()
+    public void BowlAllGutters_ScoreZero()
     {
         var game = new Game();
         BowlPins(game, 20, 0);
@@ -11,7 +11,7 @@ public class BowlingTests
     }
     
     [Fact]
-    public void RollAllOnes_ScoreTwenty()
+    public void BowlAllOnes_ScoreTwenty()
     {
         var game = new Game();
         BowlPins(game, 20, 1);
@@ -19,7 +19,7 @@ public class BowlingTests
     }
 
     [Fact]
-    public void RollSpare_PickupBonus_RollGutters_ScoreTwentySix()
+    public void BowlSpare_PickupBonus_BowlGutters_ScoreTwentySix()
     {
         var game = new Game();
         BowlPins(game, 1, 9);
@@ -30,7 +30,7 @@ public class BowlingTests
     }
 
     [Fact]
-    public void RollStrike_PickupBonus_RollGutters_ScoreThirty()
+    public void BowlStrike_PickupBonus_BowlGutters_ScoreThirty()
     {
         var game = new Game();
         BowlPins(game, 1, 10);
@@ -38,6 +38,14 @@ public class BowlingTests
         BowlPins(game, 1, 2);
         BowlPins(game, 17, 0);
         Assert.Equal(26, game.Score());
+    }
+
+    [Fact]
+    public void BowlPerfectGame_Score300()
+    {
+        var game = new Game();
+        BowlPins(game, 12, 10);
+        Assert.Equal(300, game.Score());
     }
 
     private void BowlPins(Game game, int rolls, int pins)

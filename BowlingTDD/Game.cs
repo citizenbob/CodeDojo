@@ -17,11 +17,11 @@ public class Game
                 int rollIndex = 0;
                 for (int frame = 0; frame < 10; frame++)
                 {
-                        if (isStrike(rollIndex))
+                        if (Strike(rollIndex))
                         {
                                 score = ScoreStrike(score, ref rollIndex);
                         }
-                        else if (isSpare(rollIndex))
+                        else if (Spare(rollIndex))
                         {
                                 score = ScoreSpare(score, ref rollIndex);
                         }
@@ -54,11 +54,11 @@ public class Game
                 return score;
         }
 
-        private bool isSpare(int rollIndex)
+        private bool Spare(int rollIndex)
         {
                 return _game[rollIndex] + _game[rollIndex + 1] == 10;
         }
-        private bool isStrike(int rollIndex)
+        private bool Strike(int rollIndex)
         {
                 return _game[rollIndex] == 10;
         }

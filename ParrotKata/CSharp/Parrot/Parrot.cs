@@ -4,7 +4,7 @@ namespace Parrot
 {
     // Anything that answers GetSpeed() and GetCry()
     // is a parrot as far as the outside world is concerned
-    public interface IParrot
+    public interface IParrot 
     {
         double GetSpeed();
         string GetCry();
