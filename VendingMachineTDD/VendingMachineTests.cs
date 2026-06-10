@@ -22,4 +22,15 @@ public class VendingMachineTests
         
         Assert.Equal("Vending Soda", response);
     }
+    
+    [Fact]
+    public void A01_ExceedsPrice_VendSoda_ReturnChange()
+    {
+        var machine = new VendingMachine();
+        machine.LoadProducts(new Product { Code = "A01", Name = "Soda", Price = 1.00m} );
+        
+        var response = machine.Vend("A01", 5.00m);
+        
+        Assert.Equal("Vending Soda: Change $4.00", response);
+    }
 }

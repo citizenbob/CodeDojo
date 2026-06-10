@@ -6,11 +6,12 @@ public class VendingMachine
 
     public void LoadProducts(Product product) => _products.Add(product);
 
-    public string Vend(string code, decimal price)
+    public string Vend(string code, decimal funds)
     {
-        if (code == "A01" && price == 1.00m)
+        if (code == "A01" && funds == 1.00m)
             return "Vending Soda";
-        
+        if (code == "A01" && funds > 1.00m)
+            return "Vending Soda: Change $" + (funds - 1.00m);
         return "Invalid Selection: " + code;
     }
 }
