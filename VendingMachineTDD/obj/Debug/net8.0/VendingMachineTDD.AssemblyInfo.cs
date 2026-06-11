@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VendingMachineTDD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a19a4a0175e46b2c6fe6a859ff3e769535ebd68c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fa48a99afa8703acb9790163a7a4eadcd8e1374")]
 [assembly: System.Reflection.AssemblyProductAttribute("VendingMachineTDD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VendingMachineTDD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
