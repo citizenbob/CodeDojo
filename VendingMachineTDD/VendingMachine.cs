@@ -2,7 +2,13 @@ namespace VendingMachineTDD;
 
 public class VendingMachine
 {
-    private List<Product> _products = [];
+    private List<Product> _products = new()
+    {
+        new Product { Code = "A01", Name = "Soda", Price = 1.00m, Inventory = 10 },
+        new Product { Code = "A02", Name = "Chips", Price = 0.65m, Inventory = 12 },
+        new Product { Code = "A03", Name = "Candy", Price = 0.85m, Inventory = 8 },
+        new Product { Code = "A04", Name = "Gum", Price = 0.40m, Inventory = 3 }
+    };
 
     public void LoadProducts(Product product) => _products.Add(product);
 
@@ -12,20 +18,20 @@ public class VendingMachine
         if (product is null)
             return "Invalid Selection: " + code;
 
-        if (code == "A01" && funds == 1.00m && product.Inventory > 0)
+        if (code == product.Code && funds == product.Price && product.Inventory > 0)
         {
             product.Inventory--;
-            return "Vending Soda";
+            return "Vending " + product.Name;
         }
 
-        if (code == "A01" && funds > 1.00m && product.Inventory > 0)
+        if (code == product.Code && funds > product.Price && product.Inventory > 0)
         {
             product.Inventory--;
-            return "Vending Soda: Change $" + (funds - 1.00m);
+            return $"Vending {product.Name}: Change ${funds - product.Price}";
         }
-        if (code == "A01" && funds < 1.00m && product.Inventory > 0)
-            return "Feed me $" + (1.00m - funds) + " more";
-        if (code == "A01" && product.Inventory == 0)
+        if (code == product.Code && funds < product.Price && product.Inventory > 0)
+            return "Feed me $" + (product.Price - funds) + " more";
+        if (code == product.Code && product.Inventory == 0)
             return "Sold Out";
         return "Invalid Selection: " + code;
     }
