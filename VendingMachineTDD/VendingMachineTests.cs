@@ -76,7 +76,7 @@ public class VendingMachineTests
     }
     
     [Fact]
-    public void A02_VendLastCandy_DisplaySoldOut()
+    public void A03_VendLastCandy_DisplaySoldOut()
     {
         var machine = new VendingMachine();
         machine.LoadProducts(new Product { Code = "A03", Name = "Candy", Price = 0.85m, Inventory = 8} );
@@ -91,7 +91,7 @@ public class VendingMachineTests
     }
     
     [Fact]
-    public void A02_VendLastGum_DisplaySoldOut()
+    public void A04_VendLastGum_DisplaySoldOut()
     {
         var machine = new VendingMachine();
         machine.LoadProducts(new Product { Code = "A04", Name = "Gum", Price = 0.40m, Inventory = 3} );
